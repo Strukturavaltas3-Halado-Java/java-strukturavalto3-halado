@@ -5,6 +5,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
@@ -12,12 +13,13 @@ import java.util.List;
 public class OrderRepository {
 
     private JdbcTemplate jdbcTemplate;
-
+    
     public OrderRepository(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public long saveOrder(Order order) {
+
         KeyHolder holder = new GeneratedKeyHolder();
         jdbcTemplate.update(conn -> {
             PreparedStatement ps = conn.prepareStatement("insert into orders (product_name,product_count, price_per_product) values(?,?,?)", Statement.RETURN_GENERATED_KEYS);
