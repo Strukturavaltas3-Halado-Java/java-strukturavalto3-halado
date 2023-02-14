@@ -23,3 +23,5 @@ A Tesztelés témakör összefoglalása gyakorlati példákon keresztül.
 
 [orders-app példa alkalmazás](https://github.com/Strukturavaltas3-Halado-Java/java-strukturavalto3-halado/tree/main/lab-solutions/consultation_w02d01/orders-app)
 
+## 2023-02-14
+JPA bevezetés
