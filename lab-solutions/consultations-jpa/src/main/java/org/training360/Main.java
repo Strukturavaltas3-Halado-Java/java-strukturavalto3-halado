@@ -13,11 +13,11 @@ public class Main {
     public static void main(String[] args) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("pu");
         try{
-            MovieRepository repository = new MovieRepository(factory);
-
-            Movie result = repository.saveMovie(new Movie("Star Wars",123,LocalDate.parse("1976-12-17")));
-
-            System.out.println(repository.findMovieByTitle("Star Wars"));
+//            MovieRepository repository = new MovieRepository(factory);
+//
+//            Movie result = repository.saveMovie(new Movie("Star Wars",123,LocalDate.parse("1976-12-17")));
+//
+//            System.out.println(repository.findMovieByTitle("Star Wars"));
 
         }finally {
             factory.close();
