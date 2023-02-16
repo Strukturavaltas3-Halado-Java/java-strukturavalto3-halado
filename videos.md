@@ -25,3 +25,6 @@ A Tesztelés témakör összefoglalása gyakorlati példákon keresztül.
 
 ## 2023-02-14
 JPA bevezetés
+
+## 2023-02-15
+Alkalmazás architektúra átbeszélése
