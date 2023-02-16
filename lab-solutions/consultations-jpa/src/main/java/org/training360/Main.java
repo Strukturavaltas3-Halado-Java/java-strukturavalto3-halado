@@ -15,9 +15,10 @@ public class Main {
         try{
             MovieRepository repository = new MovieRepository(factory);
 
-            Movie result = repository.saveMovie(new Movie("Titanic",123,LocalDate.parse("1997-12-17")));
+            Movie result = repository.saveMovie(new Movie("Star Wars",123,LocalDate.parse("1976-12-17")));
 
-            System.out.println(repository.findById(result.getId()));
+            System.out.println(repository.findMovieByTitle("Star Wars"));
+
         }finally {
             factory.close();
         }
