@@ -12,7 +12,7 @@
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:mariadb://localhost/mariadbtrainings"/>
             <property name="hibernate.show_sql" value="true"/>
-            <property name="javax.persistence.schema-generation.database.action" value="none" />
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
         </properties>
     </persistence-unit>
     <persistence-unit name="test-pu"
