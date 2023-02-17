@@ -1,7 +1,10 @@
 package org.traning360.user;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+
+
+import java.util.Map;
 
 public class UserRepository {
 
@@ -9,6 +12,7 @@ public class UserRepository {
 
     public UserRepository(EntityManagerFactory factory) {
         this.factory = factory;
+
     }
 
     public User saveUser(User user){
