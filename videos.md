@@ -28,3 +28,12 @@ JPA bevezetés
 
 ## 2023-02-15
 Alkalmazás architektúra átbeszélése
+
+## 2023-02-16
+Komplex feladat megoldás
+
+## 2023-02-17
+Entitások életciklusa
+
+## 2023-02-20
+JPA - Többértékű attribútumok
