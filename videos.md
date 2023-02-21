@@ -37,3 +37,6 @@ Entitások életciklusa
 
 ## 2023-02-20
 JPA - Többértékű attribútumok
+
+## 2023-02-21
+Kapcsolatok bevezetése
