@@ -2,10 +2,9 @@ package org.traning360;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import org.traning360.user.Role;
-import org.traning360.user.User;
-import org.traning360.user.UserRepository;
-import org.traning360.user.UserService;
+import org.traning360.user.*;
+
+import java.time.LocalDate;
 
 
 public class Main {
@@ -17,7 +16,7 @@ public class Main {
 
         service.saveUser("dsad","1234", Role.USER);
 
-        System.out.println(service.signInUser("dsad","4231"));
+        repository.updateUserWithContent(1L, new Content("video1",12, LocalDate.parse("2023-02-01")));
 
     }
 }

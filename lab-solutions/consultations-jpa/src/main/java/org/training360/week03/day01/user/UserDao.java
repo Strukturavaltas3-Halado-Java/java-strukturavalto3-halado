@@ -20,6 +20,8 @@ public class UserDao {
         return user;
     }
 
+
+
     public User findUser(Long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         User user = entityManager.find(User.class, id);
@@ -40,7 +42,7 @@ public class UserDao {
 
     public User findUserWithVideos(Long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        User found = entityManager.createQuery("select distinct u from User u left join fetch u.videos where u.id = :id",
+        User found = entityManager.createQuery("select distinct u from YoutubeUser u left join fetch u.videos where u.id = :id",
                 User.class)
                 .setParameter("id", id)
                 .getSingleResult();
