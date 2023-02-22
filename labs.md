@@ -58,3 +58,20 @@ Ebben az osztályban legyen egy `saveUser(User user)` nevű metódust, ami elmen
 Legyen benne még egy `findUserById(long id)` és egy `findUserByUserName(String ussername)` metódus is. 
 Végezetül legyen egy `updateUserPassword(String username, String newPassword)` metódus, ami megkeresi az adatbázisban
 a felhasználót a neve alapján, majd frissíti a jelszavát. 
+
+
+# WEEK 03 (2023.02.20-2023.02.24)
+
+## DAY 03
+
+Hozz létre egy új projektet a labs repóban a neve legyen `trainings-jpa-project`.
+
+A trainings csomagba dolgozz. Készíts egy Trainer nevű entitást. Attribútumai egy String name és egy Status status, ami egy felsorolásos típus (JUNIOR,INTERMEDIATE,SENIOR). Ezeket az értékeket konstruktorban kapja meg.  
+Készíts egy Training nevű entitást. Attribútumai: String title, LocalDate startDate, LocalDate endDate. A kapcsolat a kettő között, 
+hogy egy oktató több traininget is vihet, de egy training csak egy oktatóhoz tartozik.
+
+Készítsd el a `TrainersTrainingsRepository`-t. Ebben lehessen oktatókat lementeni. Lehessen tanfolyamot is
+lementeni, de csak úgy, hogy megkapjuk az oktató azonosítóját.  
+
+Írj egy metódust amivel egy trainert lehet lekérdezni az összes olyan tanfolyamával ami egy adott időszakra esik.
+Trainer findTrainerWithTrainingsBetween(long trainerId, LocalDate startDate, LocalDate endDate).
