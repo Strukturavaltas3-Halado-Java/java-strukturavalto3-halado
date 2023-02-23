@@ -33,14 +33,14 @@ public class TrainersTrainingsRepository {
         try{
             em.getTransaction().begin();
             Trainer actual = em.find(Trainer.class, trainerId);
-            training.setTrainer(actual);
-            em.persist(training);
+            actual.addTraining(training);
             em.getTransaction().commit();
             return training;
         }finally {
             em.close();
         }
     }
+
 
     public Trainer findTrainerById(long trainerId){
         EntityManager em = factory.createEntityManager();
@@ -64,7 +64,7 @@ public class TrainersTrainingsRepository {
     public Trainer findTrainingWithTrainerBetween(long trainerId, LocalDate start, LocalDate end){
         EntityManager em = factory.createEntityManager();
         try{
-            return  em.createQuery("select trainer from Trainer trainer left join fetch trainer.trainings  training where training.trainer.id = :trainerId and (training.startDate between :start and :end) or (training.endDate between :start and :end)", Trainer.class)
+            return  em.createQuery("select trainer from Trainer trainer left join fetch trainer.trainings  training where training.trainer.id = :trainerId and not (training.endDate < :start OR training.startDate > :end)", Trainer.class)
                     .setParameter("trainerId", trainerId)
                     .setParameter("start", start)
                     .setParameter("end", end)
@@ -72,6 +72,57 @@ public class TrainersTrainingsRepository {
 
         }finally {
             em.close();
+        }
+    }
+
+    public void deleteTrainer(long trainerId){
+        EntityManager entityManager = factory.createEntityManager();
+        try{
+            entityManager.getTransaction().begin();
+            Trainer trainer = entityManager.getReference(Trainer.class, trainerId);
+            entityManager.remove(trainer);
+            entityManager.getTransaction().commit();
+        }finally {
+            entityManager.close();
+        }
+    }
+
+
+    public void updateTrainingWithPersistedStudent(long trainingId, long studentId){
+        EntityManager em = factory.createEntityManager();
+        try{
+            em.getTransaction().begin();
+            Training training = em.find(Training.class, trainingId);
+            Student student = em.find(Student.class, studentId);
+            training.addStudent(student);
+            em.getTransaction().commit();
+        }finally {
+            em.close();
+        }
+
+    }
+
+
+    public Training findTrainingWithStudents(long trainingId){
+        EntityManager em = factory.createEntityManager();
+        try{
+            return em.createQuery("select training from Training training left join fetch training.students students where training.id = :id",Training.class)
+                    .setParameter("id",trainingId)
+                    .getSingleResult();
+        }finally {
+            em.close();
+        }
+    }
+
+    public void deleteTrainingsTrainer(long trainingId){
+        EntityManager entityManager = factory.createEntityManager();
+        try{
+            entityManager.getTransaction().begin();
+            Training training = entityManager.find(Training.class,trainingId);
+            training.setTrainer(null);
+            entityManager.getTransaction().commit();
+        }finally {
+            entityManager.close();
         }
     }
 

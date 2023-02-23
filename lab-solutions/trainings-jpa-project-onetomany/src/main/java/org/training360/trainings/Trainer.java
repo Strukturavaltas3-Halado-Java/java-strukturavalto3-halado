@@ -19,8 +19,8 @@ public class Trainer {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @OneToMany(mappedBy = "trainer")
-    private List<Training> trainings;
+    @OneToMany(mappedBy = "trainer", cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, orphanRemoval = true)
+    private List<Training> trainings = new ArrayList<>();
 
     public Trainer(String name, Status status) {
         this.name = name;
@@ -30,6 +30,10 @@ public class Trainer {
     public Trainer(){}
 
 
+    public void addTraining(Training training){
+        trainings.add(training);
+        training.setTrainer(this);
+    }
     public Long getId() {
         return id;
     }

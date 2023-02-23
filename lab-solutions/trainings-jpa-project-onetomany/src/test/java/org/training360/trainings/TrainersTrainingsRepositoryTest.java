@@ -48,6 +48,24 @@ class TrainersTrainingsRepositoryTest {
     }
 
     @Test
+    void testSaveTrainerWithTrainings(){
+        Trainer trainer = new Trainer("John",Status.JUNIOR);
+        Training training = new Training("Java", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+        Training training2 = new Training("Java Halado", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+
+        Student student = new Student("John");
+
+        training.addStudent(student);
+        training.addStudent(new Student("Jane"));
+
+        repository.saveTrainer(trainer);
+
+        repository.saveTrainingWithTrainer(trainer.getId(), training);
+        repository.saveTrainingWithTrainer(trainer.getId(), training2);
+        repository.updateTrainingWithPersistedStudent(training2.getId(), student.getId());
+    }
+
+    @Test
     void testFindTrainerWithTrainingsBetween(){
         Trainer trainer = repository.saveTrainer(new Trainer("John",Status.MEDIOR));
         repository.saveTrainingWithTrainer(
@@ -71,8 +89,79 @@ class TrainersTrainingsRepositoryTest {
         Trainer trainer = repository.saveTrainer(new Trainer("John",Status.MEDIOR));
         Trainer result = repository.findTrainerById(trainer.getId());
 
-        //assertEquals(0,result.getTrainings().size());
+        assertEquals(0,result.getTrainings().size());
 
+    }
+
+
+    @Test
+    void testDeleteTrainer(){
+        Trainer john  = repository.saveTrainer(new Trainer("John",Status.MEDIOR));
+        Trainer doe = repository.saveTrainer(new Trainer("Doe",Status.JUNIOR));
+
+        Training java = new Training("Java", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+        Training csharp = new Training("C#", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+
+        Student student = new Student("Jack");
+
+        java.addStudent(student);
+        java.addStudent(new Student("Jane"));
+
+        csharp.addStudent(new Student("Jill"));
+
+        repository.saveTrainingWithTrainer(john.getId(),java);
+
+        repository.saveTrainingWithTrainer(doe.getId(),csharp);
+        repository.updateTrainingWithPersistedStudent(csharp.getId(),student.getId());
+
+        repository.deleteTrainer(john.getId());
+
+    }
+
+    @Test
+    void testFindTrainingWithStudents(){
+        Trainer trainer = new Trainer("John",Status.JUNIOR);
+        Training training = new Training("Java", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+        Training training2 = new Training("Java Halado", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+
+        Student student = new Student("John");
+
+        training.addStudent(student);
+        training.addStudent(new Student("Jane"));
+
+        repository.saveTrainer(trainer);
+
+        repository.saveTrainingWithTrainer(trainer.getId(), training);
+        repository.saveTrainingWithTrainer(trainer.getId(), training2);
+        repository.updateTrainingWithPersistedStudent(training2.getId(), student.getId());
+
+
+        Training result = repository.findTrainingWithStudents(training2.getId());
+
+        assertEquals(1, result.getStudents().size());
+    }
+
+
+    @Test
+    void deleteTrainingsTrainer(){
+        Trainer trainer = new Trainer("John",Status.JUNIOR);
+        Trainer trainer2 = new Trainer("Jack",Status.MEDIOR);
+        Training training = new Training("Java", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+        Training training2 = new Training("Java Halado", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+
+        Student student = new Student("John");
+
+        training.addStudent(student);
+        training.addStudent(new Student("Jane"));
+
+        repository.saveTrainer(trainer);
+        repository.saveTrainer(trainer2);
+
+        repository.saveTrainingWithTrainer(trainer.getId(), training);
+        repository.saveTrainingWithTrainer(trainer2.getId(), training2);
+       // repository.updateTrainingWithPersistedStudent(training2.getId(), student.getId());
+
+        repository.deleteTrainingsTrainer(training2.getId());
     }
 
 

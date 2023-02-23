@@ -2,6 +2,7 @@ package org.training360.trainings;
 
 
 import jakarta.persistence.*;
+import org.checkerframework.checker.units.qual.A;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,11 +26,20 @@ public class Training {
     @ManyToOne
     private Trainer trainer;
 
+    @ManyToMany( cascade = CascadeType.PERSIST)
+    private List<Student> students = new ArrayList<>();
+
 
     public Training(String title, LocalDate startDate, LocalDate endDate) {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+
+    public void addStudent(Student student){
+        students.add(student);
+        student.getTrainings().add(this);
     }
 
     public Training() {
@@ -75,5 +85,13 @@ public class Training {
 
     public Trainer getTrainer() {
         return trainer;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 }
