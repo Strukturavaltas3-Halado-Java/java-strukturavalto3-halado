@@ -114,17 +114,38 @@ public class TrainersTrainingsRepository {
         }
     }
 
-    public void deleteTrainingsTrainer(long trainingId){
-        EntityManager entityManager = factory.createEntityManager();
+
+    public void removeTrainingFromTrainer(long trainingId, long trainerId){
+        EntityManager em = factory.createEntityManager();
         try{
-            entityManager.getTransaction().begin();
-            Training training = entityManager.find(Training.class,trainingId);
-            training.setTrainer(null);
-            entityManager.getTransaction().commit();
-        }finally {
-            entityManager.close();
+            em.getTransaction().begin();
+            Trainer trainer = em.find(Trainer.class, trainerId);
+            Training training = em.find(Training.class, trainingId);
+            trainer.getTrainings().remove(training);
+            em.getTransaction().commit();
+        }finally{
+            em.close();
         }
     }
+
+    public Trainer findTrainerWithTrainingsAndStudents(long trainerId){
+        EntityManager em = factory.createEntityManager();
+        try{
+           em.getTransaction().begin();
+           Trainer trainer = em.createQuery("select trainer from Trainer trainer left join fetch trainer.trainings trainings where trainer.id=:trainerId",Trainer.class)
+                   .setParameter("trainerId",trainerId)
+                   .getSingleResult();
+           List<Training> trainings = trainer.getTrainings();
+           em.createQuery("select distinct training from Training training left join fetch training.students students where training in :trainings", Training.class)
+                           .setParameter("trainings",trainings)
+                                   .getResultList();
+           em.getTransaction().commit();
+           return  trainer;
+        }finally {
+            em.close();
+        }
+    }
+    
 
 
 

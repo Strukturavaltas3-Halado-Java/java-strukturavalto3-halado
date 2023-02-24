@@ -61,4 +61,14 @@ public class Trainer {
     public List<Training> getTrainings() {
         return trainings;
     }
+
+    @Override
+    public String toString() {
+        return "Trainer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status=" + status +
+                ", trainings=" + trainings +
+                '}';
+    }
 }

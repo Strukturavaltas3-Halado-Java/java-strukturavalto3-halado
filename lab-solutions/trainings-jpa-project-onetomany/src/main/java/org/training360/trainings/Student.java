@@ -48,4 +48,12 @@ public class Student {
     public void setTrainings(List<Training> trainings) {
         this.trainings = trainings;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

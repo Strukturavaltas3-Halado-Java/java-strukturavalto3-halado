@@ -159,10 +159,32 @@ class TrainersTrainingsRepositoryTest {
 
         repository.saveTrainingWithTrainer(trainer.getId(), training);
         repository.saveTrainingWithTrainer(trainer2.getId(), training2);
-       // repository.updateTrainingWithPersistedStudent(training2.getId(), student.getId());
+        repository.updateTrainingWithPersistedStudent(training2.getId(), student.getId());
 
-        repository.deleteTrainingsTrainer(training2.getId());
+        repository.removeTrainingFromTrainer(training2.getId(), trainer2.getId());
     }
 
+
+    @Test
+    void testFindTrainerWithTrainingsAndStudents(){
+        Trainer trainer = new Trainer("John",Status.JUNIOR);
+        Trainer trainer2 = new Trainer("Jack",Status.MEDIOR);
+        Training training = new Training("Java", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+        Training training2 = new Training("Java Halado", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+
+        Student student = new Student("John");
+
+        training.addStudent(student);
+        training.addStudent(new Student("Jane"));
+
+        repository.saveTrainer(trainer);
+        repository.saveTrainer(trainer2);
+
+        repository.saveTrainingWithTrainer(trainer.getId(), training);
+        repository.saveTrainingWithTrainer(trainer2.getId(), training2);
+        repository.updateTrainingWithPersistedStudent(training2.getId(), student.getId());
+
+        System.out.println(repository.findTrainerWithTrainingsAndStudents(1L));
+    }
 
 }
