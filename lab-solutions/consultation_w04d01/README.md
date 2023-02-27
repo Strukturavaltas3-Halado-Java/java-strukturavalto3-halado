@@ -5,6 +5,7 @@
 * Adottak a `User`, `Video`, `Tag`, és `Comment` entitások, ezeket kell egymással kapcsolatokba állítani 
   a következő módon: A `User`-eknek lehetnek videóik, a videók pedig kaphatnak `Tag`-eket. Ezenkívül 
   a `User`-ek `Comment`-eket is adhatnak.
+  (Az entitások mindegyikéhez meg van írva a `save()` és a `find()` metódus, valamint az ezeket ellenőrző teszteset.)
 
 * Ennek a felépítésnek a megvalósításához oldd meg az alábbi feladatokat!
 
