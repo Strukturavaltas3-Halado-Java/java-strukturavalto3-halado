@@ -75,3 +75,13 @@ lementeni, de csak úgy, hogy megkapjuk az oktató azonosítóját.
 
 Írj egy metódust amivel egy trainert lehet lekérdezni az összes olyan tanfolyamával ami egy adott időszakra esik.
 Trainer findTrainerWithTrainingsBetween(long trainerId, LocalDate startDate, LocalDate endDate).
+
+# WEEK 04 (2023.02.27-2023.03.03)
+
+## DAY 01
+
+A konzultációs feladat kiírása itt található:
+
+[Feladatkiírás](https://github.com/Strukturavaltas3-Halado-Java/java-strukturavalto3-halado/tree/dbbe3413b001bcad76bf1a865d55800b10ccc3f9/lab-solutions/consultation_w04d01)
+
+(Vigyázat, ez a feladat egy korábbi állapotának linkje, és ezt az állapotot érdemes lemásolni, mert azóta felkerült a megoldás is.)
