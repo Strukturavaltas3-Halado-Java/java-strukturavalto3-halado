@@ -1,4 +1,4 @@
-1# Konzultáció - 2023.02.27
+# Konzultáció - 2023.02.27
 
 ## Gyakorlófeladat
 
