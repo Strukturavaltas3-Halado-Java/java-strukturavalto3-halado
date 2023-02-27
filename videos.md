@@ -40,3 +40,23 @@ JPA - Többértékű attribútumok
 
 ## 2023-02-21
 Kapcsolatok bevezetése
+
+## 2023-02-22
+
+Gyakorlati feladat és annak megbeszélése
+
+## 2023-02-23
+
+Kapcsolatok részletesen
+
+## 2023-02-24
+
+Orphan removal, ManyToMany kapcsolatok, szorgalmi házi feladat kiadása.
+
+## 2023-02-27
+
+* Cascade mentés és törlés
+* JPA kapcsolatok beállítása gyakorlati feladaton keresztül
+* Sok egymáshoz kapcsolódó entitás lekérése az adatbázisból
+* Az EntityManager létrehozásának és bezárásának kiszervezése egy külön osztályba
+* A projekt korábbi verzióra visszaállítása a GitHubon

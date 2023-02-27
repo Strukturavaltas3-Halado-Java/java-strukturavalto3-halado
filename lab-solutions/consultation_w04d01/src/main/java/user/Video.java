@@ -2,6 +2,8 @@ package user;
 
 import javax.persistence.*;
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "videos")
@@ -15,12 +17,22 @@ public class Video {
 
     private LocalTime length;
 
+    @ManyToOne
+    private User user;
+
+    @ManyToMany
+    private Set<Tag> tags = new HashSet<>();
+
     public Video() {
     }
 
     public Video(String title, LocalTime length) {
         this.title = title;
         this.length = length;
+    }
+
+    public void addTag(Tag tag) {
+        tags.add(tag);
     }
 
     public Long getId() {
@@ -47,4 +59,25 @@ public class Video {
         this.length = length;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    @Override
+    public String toString() {
+        return "Video{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", length=" + length +
+                ", tags=" + tags +
+                '}';
+    }
 }

@@ -73,4 +73,22 @@ class UserDaoTest {
         assertEquals(LocalDate.of(2021, 11, 11), other.getRegistrationDate());
         assertEquals(1, other.getComments().size());
     }
+
+    @Test
+    void saveAndFind() {
+        User user = new User("John", LocalDate.of(2021,11,11));
+        userDao.saveUser(user);
+        Video video = new Video("My first video", LocalTime.of(1, 23, 31));
+        videoDao.saveVideo(video);
+        userDao.saveVideoToUser(user.getId(), video.getId());
+        Tag tag = new Tag("myvideo");
+        tagDao.saveTag(tag);
+        videoDao.saveTagToVideo(video.getId(), tag.getId());
+        Comment comment = new Comment("This is my first video and I like it very much");
+        commentDao.saveComment(comment);
+        userDao.saveCommentToUser(user.getId(), comment.getId());
+
+        User other = userDao.findUserWithVideosTagsAndComments(user.getId());
+        System.out.println(other);
+    }
 }
