@@ -28,6 +28,29 @@ public class TrainersTrainingsRepository {
     }
 
 
+    //TODO:LEFT JOIN és JOIN közti különbség
+    public List<Trainer> findTrainersWithTrainings(){
+        EntityManager em = factory.createEntityManager();
+        try{
+            return em.createQuery("select trainer from Trainer trainer left join fetch trainer.trainings", Trainer.class)
+                    .getResultList();
+        }finally {
+            em.close();
+        }
+    }
+
+    public List<Trainer> findTrainersWithStatus(Status status){
+        EntityManager em = factory.createEntityManager();
+        try{
+            return em.createQuery("select distinct t from Trainer t left join fetch t.trainings where t.status=:status",Trainer.class)
+                    .setParameter("status",status)
+                    .getResultList();
+        }finally {
+            em.close();
+        }
+    }
+
+
     public Training saveTrainingWithTrainer(long trainerId, Training training){
         EntityManager em = factory.createEntityManager();
         try{
@@ -64,7 +87,7 @@ public class TrainersTrainingsRepository {
     public Trainer findTrainingWithTrainerBetween(long trainerId, LocalDate start, LocalDate end){
         EntityManager em = factory.createEntityManager();
         try{
-            return  em.createQuery("select trainer from Trainer trainer left join fetch trainer.trainings  training where training.trainer.id = :trainerId and not (training.endDate < :start OR training.startDate > :end)", Trainer.class)
+            return  em.createQuery("select distinct trainer from Trainer trainer left join fetch trainer.trainings  training where training.trainer.id = :trainerId and not (training.endDate < :start OR training.startDate > :end)", Trainer.class)
                     .setParameter("trainerId", trainerId)
                     .setParameter("start", start)
                     .setParameter("end", end)

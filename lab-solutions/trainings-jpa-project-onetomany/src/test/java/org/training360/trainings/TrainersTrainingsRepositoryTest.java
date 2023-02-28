@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -185,6 +186,41 @@ class TrainersTrainingsRepositoryTest {
         repository.updateTrainingWithPersistedStudent(training2.getId(), student.getId());
 
         System.out.println(repository.findTrainerWithTrainingsAndStudents(1L));
+    }
+
+//TODO:Test for left join fetch
+    @Test
+    void findTrainerWithTrainings(){
+        Trainer trainer = new Trainer("John",Status.JUNIOR);
+        Trainer trainer2 = new Trainer("Jack",Status.MEDIOR);
+        Training training = new Training("Java", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+
+        repository.saveTrainer(trainer);
+        repository.saveTrainer(trainer2);
+
+        repository.saveTrainingWithTrainer(trainer.getId(), training);
+
+        List<Trainer> trainers = repository.findTrainersWithTrainings();
+
+        assertEquals(2, trainers.size());
+
+    }
+
+    //TODO:Test for distinct
+    @Test
+    void findTrainersWithStatus(){
+        Trainer trainer = new Trainer("John",Status.JUNIOR);
+        Training training = new Training("Java", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+        Training training2 = new Training("C#", LocalDate.parse("2022-09-03"),LocalDate.parse("2023-04-26"));
+        Trainer trainer2 = new Trainer("Jack",Status.JUNIOR);
+
+        repository.saveTrainer(trainer);
+        repository.saveTrainer(trainer2);
+        repository.saveTrainingWithTrainer(trainer.getId(), training);
+        repository.saveTrainingWithTrainer(trainer.getId(), training2);
+
+        assertEquals(2, repository.findTrainersWithStatus(Status.JUNIOR).size());
+
     }
 
 }
