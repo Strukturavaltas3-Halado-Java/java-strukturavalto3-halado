@@ -60,3 +60,9 @@ Orphan removal, ManyToMany kapcsolatok, szorgalmi házi feladat kiadása.
 * Sok egymáshoz kapcsolódó entitás lekérése az adatbázisból
 * Az EntityManager létrehozásának és bezárásának kiszervezése egy külön osztályba
 * A projekt korábbi verzióra visszaállítása a GitHubon
+
+## 2023-02-28
+Törlés Jpa-val, Distinct és join művletek, elmélkedés a Hibernate működéséről
+
+## 2023-03-01
+Bevezetés a SpringBoot használatába
