@@ -66,3 +66,15 @@ Törlés Jpa-val, Distinct és join művletek, elmélkedés a Hibernate működ�
 
 ## 2023-03-01
 Bevezetés a SpringBoot használatába
+
+## 2023-03-02
+
+Elméleti ismétlés visszakérdezéses formában.
+
+## 2023-03-03
+
+Tábla alapú egyedi azonosító generálás. Hallgatói projektek bemutatása.
+
+## 2023-03-20
+
+A vizsga JPA feladatainak megoldása. Egy hallgatói projekt bemutatása.
