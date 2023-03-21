@@ -137,6 +137,17 @@ public class TrainersTrainingsRepository {
         }
     }
 
+    public List<Trainer> findTrainerWithMoreTrainingsThan(int amount){
+        EntityManager entityManager = factory.createEntityManager();
+        try{
+            return entityManager.createQuery("select trainer from Trainer trainer left join fetch trainer.trainings trainings where size(trainings)>:amount",Trainer.class)
+                    .setParameter("amount",amount)
+                    .getResultList();
+        }finally {
+            entityManager.close();
+        }
+    }
+
 
     public void removeTrainingFromTrainer(long trainingId, long trainerId){
         EntityManager em = factory.createEntityManager();

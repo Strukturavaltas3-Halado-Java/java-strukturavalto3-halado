@@ -223,4 +223,9 @@ class TrainersTrainingsRepositoryTest {
 
     }
 
+    @Test
+    void findTrainerWithMoreTrainingsThan(){
+        repository.findTrainerWithMoreTrainingsThan(0);
+    }
+
 }

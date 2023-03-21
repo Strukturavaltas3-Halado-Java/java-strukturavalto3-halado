@@ -10,6 +10,13 @@ import java.util.List;
 @Table(name="trainers")
 public class Trainer {
 
+//    @TableGenerator(name ="Trainer_Gen",
+//    table="ID_GEN",
+//    pkColumnName = "GEN_NAME",
+//    valueColumnName = "GEN_VALUE",
+//    pkColumnValue = "Trainer_Gen",
+//    initialValue = 1000,
+//    allocationSize = 100)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

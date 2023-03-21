@@ -12,8 +12,15 @@ import java.util.List;
 @Table(name="trainings")
 public class Training {
 
+    @TableGenerator(name ="Training_Gen",
+            table="ID_GEN",
+            pkColumnName = "GEN_NAME",
+            valueColumnName = "GEN_VALUE",
+            pkColumnValue = "Training_Gen",
+            initialValue = 1,
+            allocationSize = 51)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "Training_Gen")
     private Long id;
     private String title;
 
