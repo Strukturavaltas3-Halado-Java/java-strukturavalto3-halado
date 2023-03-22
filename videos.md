@@ -78,3 +78,9 @@ Tábla alapú egyedi azonosító generálás. Hallgatói projektek bemutatása.
 ## 2023-03-20
 
 A vizsga JPA feladatainak megoldása. Egy hallgatói projekt bemutatása.
+
+## 2023-03-21
+Bevezetés a RESTful webalkalmazás fejlesztésbe
+
+## 2023-03-22
+CRUD műveletek
