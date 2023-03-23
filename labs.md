@@ -85,3 +85,23 @@ A konzultációs feladat kiírása itt található:
 [Feladatkiírás](https://github.com/Strukturavaltas3-Halado-Java/java-strukturavalto3-halado/tree/dbbe3413b001bcad76bf1a865d55800b10ccc3f9/lab-solutions/consultation_w04d01)
 
 (Vigyázat, ez a feladat egy korábbi állapotának linkje, és ezt az állapotot érdemes lemásolni, mert azóta felkerült a megoldás is.)
+
+
+# WEEK 07 ( 2023.03.20-2023.03.24)
+
+## DAY 04
+A mai feladatban ismét egy filmekkel foglalkozó alkalmazást kell összeraknod.  
+
+A `Movie` entitásnak legyen egy azonosítója, egy címe, egy hossza, egy, az eddigi értékeléseket
+tartalmazó listája és egy értékelésátlaga.
+Minden egyes alkalommal amikor egy értékelést kap a film, akkor az értékelésátlag ennek megfelelően változik!   
+
+Legyen egy `MovieService` osztályod, ami listában tárolja a filmeket. Kezdetben a lista üres, később tudunk filmet hozzáadni.   
+
+Legyen egy `MovieController` ami alapértelmezetten az `api/movies` URL-en várja a kéréseket.   
+
+A következő funkciókat kell megvalósítani:
+
+* Lehessen lekérni az összes filmet illetve új filmet hozzáadni (cím és hossz) a `api/movies` végponton.
+* A `/{id}` URL-en keresztül lehessen egy aktuális filmet lekérdezni.
+* A `/{id}/ratings` URL-en keresztül lehessen egy filmre értékelést adni és az értékeléseit lekérdezni. GET esetén adjuk vissza a film értékeléseinek listáját. POST esetén egy számot várunk, de az értékelések listájával térünk vissza.
