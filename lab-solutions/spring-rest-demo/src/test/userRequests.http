@@ -24,7 +24,8 @@ PUT http://localhost:8080/api/users/1
 Content-Type: application/json
 
 {
-  "username": "Lane"
+  "username": "Lane",
+  "email": "jane@jack.hu"
 }
 
 ###
