@@ -16,6 +16,10 @@ GET http://localhost:8080/api/users/1
 Accept: application/json
 
 ###
+
+GET http://localhost:8080/api/users/2
+Accept: application/json
+###
 GET http://localhost:8080/api/users?userStart=A
 Accept: application/json
 

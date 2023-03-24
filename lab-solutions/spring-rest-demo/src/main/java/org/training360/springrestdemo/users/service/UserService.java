@@ -47,6 +47,7 @@ public class UserService {
 
     public UserDto getUserById(long id) {
         User user = findUserById(id);
+        System.out.printf("Thread: %s; bean instance: %s; user id: %s has the name: %s%n", Thread.currentThread().getName(), this, user.getId(), user.getUsername());
         return userMapper.toDto(user);
     }
 
@@ -59,6 +60,8 @@ public class UserService {
         if(userCommand.getEmail()!=null){
             user.setEmail(userCommand.getEmail());
         }
+
+
         return userMapper.toDto(user);
 
     }

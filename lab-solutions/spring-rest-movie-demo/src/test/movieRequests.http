@@ -4,7 +4,7 @@ Content-Type: application/json
 {"rating": 11}
 
 ###
-GET http://localhost:8080/api/movies
+GET http://localhost:8080/api/movies?movieTitle=park
 Accept: application/json
 
 ###
@@ -16,6 +16,16 @@ Content-Type: application/json
   "length": 127
 }
 
-###
+### Get Ratings
 GET http://localhost:8080/api/movies/1/ratings
 Accept: application/json
+
+
+###
+PUT http://localhost:8080/api/movies/1
+Content-Type: application/json
+
+{
+  "title": "Jurassic Park",
+  "length": 129
+}

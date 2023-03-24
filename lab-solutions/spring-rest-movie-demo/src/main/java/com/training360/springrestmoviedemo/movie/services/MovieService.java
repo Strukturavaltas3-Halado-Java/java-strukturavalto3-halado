@@ -3,27 +3,38 @@ package com.training360.springrestmoviedemo.movie.services;
 import com.training360.springrestmoviedemo.movie.dtos.AddRatingCommand;
 import com.training360.springrestmoviedemo.movie.dtos.CreateMovieCommand;
 import com.training360.springrestmoviedemo.movie.dtos.MovieDto;
+import com.training360.springrestmoviedemo.movie.dtos.UpdateMovieCommand;
 import com.training360.springrestmoviedemo.movie.mappers.MovieMapper;
 import com.training360.springrestmoviedemo.movie.model.Movie;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieService {
 
     private AtomicLong idGenerator = new AtomicLong(0);
-    private List<Movie> movies = new ArrayList<>();
+    private List<Movie> movies = Collections.synchronizedList(new ArrayList<>());
     private MovieMapper movieMapper;
 
     public MovieService(MovieMapper movieMapper) {
         this.movieMapper = movieMapper;
     }
 
-    public List<MovieDto> getAllMovies() {
+    public List<MovieDto> getAllMovies(Optional<String> movieTitle) {
+        if(movieTitle.isPresent()){
+            List<Movie> result = findMoviesWithTitlePart(movieTitle.get());
+            return movieMapper.toDto(result);
+        }
         return movieMapper.toDto(movies);
+    }
+
+    private List<Movie> findMoviesWithTitlePart(String s) {
+        return movies.stream()
+                .filter(m->m.getTitle().toLowerCase().contains(s.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     public MovieDto createMovie(CreateMovieCommand command) {
@@ -54,5 +65,13 @@ public class MovieService {
 
     public List<Integer> getMovieRatingsById(long id) {
         return findById(id).getRatings();
+    }
+
+    public MovieDto updateMovie(long id, UpdateMovieCommand command) {
+        Movie found = findById(id);
+        found.setTitle(command.getTitle());
+        found.setLength(command.getLength());
+
+        return movieMapper.toDto(found);
     }
 }
