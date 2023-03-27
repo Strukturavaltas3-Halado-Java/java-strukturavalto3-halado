@@ -87,3 +87,9 @@ CRUD műveletek
 
 ## 2023-03-23
 Órai feladat, MapStruct
+
+## 2023-03-24
+Szálkezelés alapok, Gyakorlás
+
+## 2023-03-27
+Maven install, deploy. GitHub packages. Springes alkalmazás elindítása távoli virtuális gépen.
