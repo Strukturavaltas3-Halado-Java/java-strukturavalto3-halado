@@ -5,9 +5,13 @@ import com.training360.springrestmoviedemo.movie.dtos.CreateMovieCommand;
 import com.training360.springrestmoviedemo.movie.dtos.MovieDto;
 import com.training360.springrestmoviedemo.movie.dtos.UpdateMovieCommand;
 import com.training360.springrestmoviedemo.movie.services.MovieService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +34,8 @@ public class MovieController {
     }
 
     @PostMapping
-    public MovieDto createMovie(@RequestBody CreateMovieCommand command){
+    @ResponseStatus(HttpStatus.CREATED)
+    public MovieDto createMovie(@Valid @RequestBody CreateMovieCommand command){
         return service.createMovie(command);
     }
 
@@ -45,7 +50,10 @@ public class MovieController {
     }
 
    @PutMapping("/{id}")
+   @ResponseStatus(HttpStatus.CREATED)
     public MovieDto updateMovie(@PathVariable("id") long id, @RequestBody UpdateMovieCommand command){
         return service.updateMovie(id, command);
    }
+
+
 }

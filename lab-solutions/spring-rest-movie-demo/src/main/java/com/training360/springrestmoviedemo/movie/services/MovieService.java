@@ -4,6 +4,7 @@ import com.training360.springrestmoviedemo.movie.dtos.AddRatingCommand;
 import com.training360.springrestmoviedemo.movie.dtos.CreateMovieCommand;
 import com.training360.springrestmoviedemo.movie.dtos.MovieDto;
 import com.training360.springrestmoviedemo.movie.dtos.UpdateMovieCommand;
+import com.training360.springrestmoviedemo.movie.exceptions.MovieNotFoundException;
 import com.training360.springrestmoviedemo.movie.mappers.MovieMapper;
 import com.training360.springrestmoviedemo.movie.model.Movie;
 import org.springframework.stereotype.Service;
@@ -53,7 +54,7 @@ public class MovieService {
     private Movie findById(long id){
         return  movies.stream()
                 .filter(m->m.getId()==id)
-                .findFirst().orElseThrow(()->new IllegalArgumentException("Cannot find movie with id: "+id));
+                .findFirst().orElseThrow(()->new MovieNotFoundException(id));
     }
 
     public List<Integer> addRatingToMovie(long id, AddRatingCommand rating) {
