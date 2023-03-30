@@ -105,3 +105,31 @@ A következő funkciókat kell megvalósítani:
 * Lehessen lekérni az összes filmet illetve új filmet hozzáadni (cím és hossz) a `api/movies` végponton.
 * A `/{id}` URL-en keresztül lehessen egy aktuális filmet lekérdezni.
 * A `/{id}/ratings` URL-en keresztül lehessen egy filmre értékelést adni és az értékeléseit lekérdezni. GET esetén adjuk vissza a film értékeléseinek listáját. POST esetén egy számot várunk, de az értékelések listájával térünk vissza.
+
+
+# WEEK 08 (2023.03.27-2023.03.31)
+
+## DAY 04
+Készíts a NAV-hoz egy időpontfoglaló rendszert!
+Hozzd létre a `NavService` és a `NavController` osztályokat.
+
+A `/api/types` címen
+le lehessen kérdezni az ügytípusokat, melyek kódok, és hozzá tartozó értékek!
+Pl.: 001 - Adóbevallás, 002 - Befizetés, stb. Ezeket a `NavService`
+listájában tárold el (két attribútummal rendelkező objektumok, akár be is égethted)!
+
+Legyen a `NavService` osztályban még egy foglalt időpontok listája ami kezdetben üres. 
+
+Valósítsd meg az időpont foglalást mely az `/api/appointments/` címen legyen elérhető.
+A következő adatokat várja egy commandban. 
+
+* adóazonosító jel (CDV ellenőrzés: pontosan tíz számjegyet tartalmaz. Fogni kell az első kilenc számjegyet,
+  és megszorozni rendre 1, 2, ..., 9 számmal. Az eredményt kell összegezni,
+  majd maradékosan osztani 11-gyel. A 10. számjegynek meg kell egyeznie
+  ezzel a számmal (maradékkal).) A `NavService`-ben mentés előtt ellenőrizd, ha nem oké dobj kivételt. 
+* időpont kezdete (jövőbeli időpontnak kell lennie, van rá beépített annotáció)
+* időpont vége  (jövőbeli időpontnak kell lennie)
+* ügytípus azonosítója  
+
+Ha minden oké, mentsd el az adatokat a foglalt időpontok listába.
+
