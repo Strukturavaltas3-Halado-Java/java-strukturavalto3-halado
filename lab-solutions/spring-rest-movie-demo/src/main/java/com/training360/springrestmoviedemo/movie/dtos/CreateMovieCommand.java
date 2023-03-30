@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 public class CreateMovieCommand {
 
-    @NotBlank(message = "Title must not be blank!")
+    @NotBlank
     private String title;
     @Positive(message = "Length must be positive!")
     private int length;

@@ -12,8 +12,8 @@ POST http://localhost:8080/api/movies
 Content-Type: application/json
 
 {
-  "title": "Jurassic Park",
-  "length": -1
+  "title": "Jur",
+  "length": 10
 }
 
 ### Get Ratings
@@ -26,6 +26,6 @@ PUT http://localhost:8080/api/movies/1
 Content-Type: application/json
 
 {
-  "title": "",
+  "title": "jur",
   "length": 129
 }

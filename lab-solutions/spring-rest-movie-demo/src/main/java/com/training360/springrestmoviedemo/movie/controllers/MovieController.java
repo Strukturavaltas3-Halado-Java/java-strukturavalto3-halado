@@ -51,7 +51,7 @@ public class MovieController {
 
    @PutMapping("/{id}")
    @ResponseStatus(HttpStatus.CREATED)
-    public MovieDto updateMovie(@PathVariable("id") long id, @RequestBody UpdateMovieCommand command){
+    public MovieDto updateMovie(@PathVariable("id") long id, @Valid @RequestBody UpdateMovieCommand command){
         return service.updateMovie(id, command);
    }
 

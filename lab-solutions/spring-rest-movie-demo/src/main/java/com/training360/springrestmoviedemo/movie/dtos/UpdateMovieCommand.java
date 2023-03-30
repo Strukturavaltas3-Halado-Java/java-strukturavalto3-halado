@@ -14,7 +14,6 @@ import lombok.Setter;
 @Setter
 public class UpdateMovieCommand {
 
-
     private String title;
     private int length;
 }
