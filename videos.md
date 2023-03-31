@@ -101,7 +101,7 @@ Státuszkódok, hibakezelés
 Integrációs tesztelés
 
 ### 2023-03-30
-Gyakorlati feladat (NAV időpontfoglalás)
+Gyakorlati feladat (NAV időpontfoglalás), saját validáció
 
 ### 2023-03-31
 AhaSlides teszt, JUnit Extension osztályok
