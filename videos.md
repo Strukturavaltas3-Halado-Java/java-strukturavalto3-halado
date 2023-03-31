@@ -93,3 +93,15 @@ Szálkezelés alapok, Gyakorlás
 
 ## 2023-03-27
 Maven install, deploy. GitHub packages. Springes alkalmazás elindítása távoli virtuális gépen.
+
+### 2023-03-28
+Státuszkódok, hibakezelés
+
+### 2023-03-29
+Integrációs tesztelés
+
+### 2023-03-30
+Gyakorlati feladat (NAV időpontfoglalás)
+
+### 2023-03-31
+AhaSlides teszt, JUnit Extension osztályok
