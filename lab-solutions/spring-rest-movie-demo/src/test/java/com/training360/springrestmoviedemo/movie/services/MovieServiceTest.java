@@ -4,7 +4,9 @@ import com.training360.springrestmoviedemo.movie.dtos.CreateMovieCommand;
 import com.training360.springrestmoviedemo.movie.dtos.MovieDto;
 import com.training360.springrestmoviedemo.movie.mappers.MovieMapper;
 import com.training360.springrestmoviedemo.movie.mappers.MovieMapperImpl;
+import com.training360.springrestmoviedemo.movie.repository.MovieRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MovieServiceTest {
 
-    MovieService service = new MovieService(new MovieMapperImpl());
+    @Autowired
+    MovieRepository repository;
+
+
+    MovieService service = new MovieService(repository, new MovieMapperImpl());
 
     @Test
     void getAllMoviesTest(){

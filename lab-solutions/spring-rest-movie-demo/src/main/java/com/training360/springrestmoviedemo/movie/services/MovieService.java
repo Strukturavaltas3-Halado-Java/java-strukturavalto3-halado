@@ -7,6 +7,9 @@ import com.training360.springrestmoviedemo.movie.dtos.UpdateMovieCommand;
 import com.training360.springrestmoviedemo.movie.exceptions.MovieNotFoundException;
 import com.training360.springrestmoviedemo.movie.mappers.MovieMapper;
 import com.training360.springrestmoviedemo.movie.model.Movie;
+import com.training360.springrestmoviedemo.movie.repository.MovieRepository;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -14,34 +17,30 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class MovieService {
 
-    private AtomicLong idGenerator = new AtomicLong(0);
-    private List<Movie> movies = Collections.synchronizedList(new ArrayList<>());
-    private MovieMapper movieMapper;
+    private final MovieRepository movieRepository;
+    private final MovieMapper movieMapper;
 
-    public MovieService(MovieMapper movieMapper) {
-        this.movieMapper = movieMapper;
-    }
 
     public List<MovieDto> getAllMovies(Optional<String> movieTitle) {
+
+        List<Movie> movies;
+
         if(movieTitle.isPresent()){
-            List<Movie> result = findMoviesWithTitlePart(movieTitle.get());
-            return movieMapper.toDto(result);
+            movies = movieRepository.findMovieByTitleContains(movieTitle.get());
+        }else{
+            movies = movieRepository.findAll();
         }
         return movieMapper.toDto(movies);
     }
 
-    private List<Movie> findMoviesWithTitlePart(String s) {
-        return movies.stream()
-                .filter(m->m.getTitle().toLowerCase().contains(s.toLowerCase()))
-                .collect(Collectors.toList());
-    }
 
+    @Transactional
     public MovieDto createMovie(CreateMovieCommand command) {
         Movie movie = new Movie(command.getTitle(),command.getLength());
-        movie.setId(idGenerator.incrementAndGet());
-        movies.add(movie);
+        movieRepository.save(movie);
         return movieMapper.toDto(movie);
     }
 
@@ -52,11 +51,15 @@ public class MovieService {
 
 
     private Movie findById(long id){
-        return  movies.stream()
-                .filter(m->m.getId()==id)
-                .findFirst().orElseThrow(()->new MovieNotFoundException(id));
+       Optional<Movie> movie = movieRepository.findById(id);
+       if(movie.isEmpty()){
+           throw new MovieNotFoundException(id);
+       }
+
+       return movie.get();
     }
 
+    @Transactional
     public List<Integer> addRatingToMovie(long id, AddRatingCommand rating) {
         Movie movie = findById(id);
         movie.addRating(rating.getRating());
@@ -68,6 +71,7 @@ public class MovieService {
         return findById(id).getRatings();
     }
 
+    @Transactional
     public MovieDto updateMovie(long id, UpdateMovieCommand command) {
         Movie found = findById(id);
         found.setTitle(command.getTitle());
@@ -75,4 +79,5 @@ public class MovieService {
 
         return movieMapper.toDto(found);
     }
+
 }

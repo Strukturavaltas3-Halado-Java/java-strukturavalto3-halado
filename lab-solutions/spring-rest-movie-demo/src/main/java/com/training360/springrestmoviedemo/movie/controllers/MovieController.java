@@ -7,6 +7,7 @@ import com.training360.springrestmoviedemo.movie.dtos.UpdateMovieCommand;
 import com.training360.springrestmoviedemo.movie.services.MovieService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import java.util.Optional;
 public class MovieController {
 
     private MovieService service;
+
 
     @GetMapping
     public List<MovieDto> getAllMovies(@RequestParam Optional<String> movieTitle){

@@ -1,5 +1,6 @@
 package com.training360.springrestmoviedemo.movie.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,12 +13,18 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table(name = "movies")
 public class Movie {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private int length;
+    @ElementCollection
     private List<Integer> ratings = new ArrayList<>();
+    @Column(name = "average_rating")
     private double averageRating;
 
 

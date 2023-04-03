@@ -3,6 +3,8 @@ package com.training360.springrestmoviedemo.movie.controllers;
 import com.training360.springrestmoviedemo.movie.dtos.CreateMovieCommand;
 import com.training360.springrestmoviedemo.movie.dtos.MovieDto;
 import com.training360.springrestmoviedemo.movie.dtos.UpdateMovieCommand;
+import com.training360.springrestmoviedemo.movie.services.MovieService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +22,10 @@ class MovieControllerTestIT {
 
     @Autowired
     WebTestClient client;
+
+
+    @Autowired
+    MovieService service;
 
     @Test
     void testCreateMovie(){
