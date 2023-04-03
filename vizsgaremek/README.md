@@ -6,11 +6,11 @@ A cél, hogy valósítsátok meg az egyéni ötleteteket!
 
 ## Feladat nagysága
 
-* Legalább két tábla, 1-n kapcsolatban
+* Legalább két tábla, 1-n kapcsolatban (lehet n-n is)
 * Legalább két SQL migráció
 * Legalább két entitás
 * Legalább egy service
-* Legalább két controller
+* Legalább egy controller
 * Minden HTTP metódusra legalább egy végpont (`GET`, `POST`, `PUT`, `DELETE`)
 
 ## Nem-funkcionális követelmények
@@ -22,7 +22,7 @@ Követelmények tételesen:
 
 * Hozz létre egy `README.md` fájlt, ami tartalmaz egy rövid leírást a projektről
 * SQL adatbázis kezelő réteg megvalósítása Spring Data JPA-val (`Repository`)
-* Flyway - a scriptek a funkciókkal együtt készüljenek, szóval ahogy bekerül az entitás, úgy kerüljön be egy
+* Flyway/Liquibase - a scriptek a funkciókkal együtt készüljenek, szóval ahogy bekerül az entitás, úgy kerüljön be egy
   plusz script is, ami a táblát létrehozza
 * Üzleti logika réteg megvalósítása `@Service` osztályokkal
 * Integrációs tesztek megléte (elég WebClient tesztek), legalább 80%-os tesztlefedettség
@@ -31,7 +31,7 @@ Követelmények tételesen:
 * Swagger felület
 * HTTP fájl a teszteléshez
 * Dockerfile
-* Új privát repository-ba kell dolgozni az organization-ön belül, melynek címe `java-sv2-adv-project-VezetéknévKeresztnév`
+* Új privát repository-ba kell dolgozni az organization-ön belül, melynek címe `java-sv3-adv-project-VezetéknévKeresztnév`
 * Commitolni legalább entitásonként, és hozzá tartozó REST végpontonként
 
 
