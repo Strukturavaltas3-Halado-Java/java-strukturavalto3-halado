@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  movieapp:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/moviesdb-compose
+    depends_on:
+      - mysqldb
+  mysqldb:
+    platform: linux/x86_64
+    image: "mysql:5.7"
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: moviesdb-compose
+      MYSQL_USER: training
+      MYSQL_PASSWORD: training
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes

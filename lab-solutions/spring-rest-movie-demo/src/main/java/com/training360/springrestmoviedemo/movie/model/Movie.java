@@ -23,6 +23,7 @@ public class Movie {
     private String title;
     private int length;
     @ElementCollection
+    @Column(name ="rating")
     private List<Integer> ratings = new ArrayList<>();
     @Column(name = "average_rating")
     private double averageRating;
