@@ -1,0 +1,16 @@
+POST http://localhost:8080/api/authors
+Content-Type: application/json
+
+{
+    "name": "John Doe"
+}
+
+### Create book
+
+POST http://localhost:8080/api/authors/1/books
+Content-Type: application/json
+
+{
+    "isbn": "1234",
+    "title": "To be or not to be"
+}
