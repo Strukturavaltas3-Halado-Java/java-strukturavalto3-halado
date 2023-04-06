@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 public class PersonChildApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Consultation20230331Application.class, args);
+		SpringApplication.run(PersonChildApplication.class, args);
 	}
 
 	@Bean
