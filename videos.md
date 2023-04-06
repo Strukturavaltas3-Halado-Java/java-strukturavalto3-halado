@@ -105,3 +105,15 @@ Gyakorlati feladat (NAV időpontfoglalás), saját validáció
 
 ### 2023-03-31
 AhaSlides teszt, JUnit Extension osztályok
+
+### 2023-04-03
+Vizsgaremek, SpringDataJpa
+
+### 2023-04-04
+Liquibase, Tesztelés
+
+### 2023-04-05
+Author-Book alkalmazás, első rész
+
+### 2023-04-06
+Gyakorlati feladat JPQL query-k gyakorlására
