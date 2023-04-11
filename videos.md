@@ -117,3 +117,6 @@ Author-Book alkalmazás, első rész
 
 ### 2023-04-06
 Gyakorlati feladat JPQL query-k gyakorlására
+
+### 2023-04-11
+Az előző szerdai Author-Book alkalmazás folytatása.
