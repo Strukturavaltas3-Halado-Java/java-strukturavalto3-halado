@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -19,7 +20,7 @@ public class Author {
     private String name;
 
     @OneToMany(mappedBy = "author")
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
 
     public Author(String name) {
         this.name = name;

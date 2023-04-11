@@ -1,5 +1,6 @@
 package training.books;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,10 +24,15 @@ public class BookService {
         log.info("Books: {}", books);
         return booksConverter.convertBooks(books);
     }
+
     public BookDto createBook(long authorId, CreateBookCommand command) {
         Author author = authorRepository.getReferenceById(authorId); // Nincs SQL!
         Book book = new Book(command.getIsbn(), command.getTitle(), author);
         bookRepository.save(book);
         return booksConverter.convert(book);
+    }
+
+    public List<BookByTitleDto> listBooksByTitle(String titleFragment) {
+        return booksConverter.convertBooksWithAuthor(bookRepository.findByTitle("%" + titleFragment + "%"));
     }
 }

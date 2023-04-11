@@ -11,5 +11,5 @@ public class AuthorDto {
 
     private String name;
 
-    // private List<BookDto> books;
+    private List<BookWithTitleAndIsbnDto> books;
 }

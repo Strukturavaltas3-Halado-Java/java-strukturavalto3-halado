@@ -14,4 +14,6 @@ public interface BooksConverter {
     List<AuthorDto> convert(List<Author> all);
 
     List<BookDto> convertBooks(List<Book> books);
+
+    List<BookByTitleDto> convertBooksWithAuthor(List<Book> books);
 }

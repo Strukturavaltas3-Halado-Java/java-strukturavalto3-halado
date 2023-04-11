@@ -21,4 +21,9 @@ public class AuthorController {
     public List<AuthorDto> listAuthors() {
         return authorService.listAuthors();
     }
+
+    @GetMapping("/{id}")
+    public AuthorDto getAuthorWithBooks(@PathVariable("id") long id) {
+        return authorService.getAuthorWithBooks(id);
+    }
 }

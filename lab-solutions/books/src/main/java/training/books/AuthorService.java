@@ -22,4 +22,8 @@ public class AuthorService {
     public List<AuthorDto> listAuthors() {
         return converter.convert(authorRepository.findAll());
     }
+
+    public AuthorDto getAuthorWithBooks(long id) {
+        return converter.convert(authorRepository.findAuthorWithBooks(id));
+    }
 }
