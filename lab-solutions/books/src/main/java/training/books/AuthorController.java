@@ -1,6 +1,7 @@
 package training.books;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class AuthorController {
     private AuthorService authorService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public AuthorDto createAuthor(@RequestBody CreateAuthorCommand command) {
         return authorService.createAuthor(command);
     }

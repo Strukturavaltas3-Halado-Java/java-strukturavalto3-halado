@@ -35,4 +35,9 @@ public class BookService {
     public List<BookByTitleDto> listBooksByTitle(String titleFragment) {
         return booksConverter.convertBooksWithAuthor(bookRepository.findByTitle("%" + titleFragment + "%"));
     }
+
+    public String getBookIsbnById(long id) {
+        Book book = bookRepository.findById(id).orElseThrow(()->new BookNotFoundException(id));
+        return book.getIsbn();
+    }
 }

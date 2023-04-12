@@ -27,4 +27,9 @@ public class BookController {
     public List<BookByTitleDto> listBooksByTitle(@RequestParam String titleFragment) {
         return bookService.listBooksByTitle(titleFragment);
     }
+
+    @GetMapping("/{id}/isbn")
+    public String findBookIsbnById(@PathVariable("id") long id){
+        return bookService.getBookIsbnById(id);
+    }
 }
