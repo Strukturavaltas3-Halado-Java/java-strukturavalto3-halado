@@ -27,6 +27,7 @@ public class BookService {
 
     public BookDto createBook(long authorId, CreateBookCommand command) {
         Author author = authorRepository.getReferenceById(authorId); // Nincs SQL!
+        System.out.println(author.getId());
         Book book = new Book(command.getIsbn(), command.getTitle(), author);
         bookRepository.save(book);
         return booksConverter.convert(book);

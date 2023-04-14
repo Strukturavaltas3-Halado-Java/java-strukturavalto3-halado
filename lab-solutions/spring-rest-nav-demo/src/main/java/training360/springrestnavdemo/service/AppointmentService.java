@@ -35,8 +35,8 @@ public class AppointmentService {
         Appointment appointment = Appointment.builder()
                 .id(idGenerator.incrementAndGet())
                 .Cdv(command.getCdv())
-                .startDate(command.getStartDate())
-                .endDate(command.getEndDate())
+                .startDate(command.getInterval().getStartDate())
+                .endDate(command.getInterval().getEndDate())
                 .typeOfAdministration(command.getTypeOfAdministration())
                 .build();
 

@@ -80,4 +80,9 @@ public class MovieService {
         return movieMapper.toDto(found);
     }
 
+    public void deleteMovie(long id) {
+        movieRepository.findById(id).orElseThrow(()->new MovieNotFoundException(id));
+        movieRepository.deleteById(id);
+
+    }
 }

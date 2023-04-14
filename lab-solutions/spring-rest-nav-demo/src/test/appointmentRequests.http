@@ -2,10 +2,12 @@ POST http://localhost:8080/api/appointments
 Content-Type: application/json
 
 {
-  "cdv":"000000000",
-  "startDate":"2024-12-12T12:30:00",
-  "endDate":"2024-12-12T12:45:00",
-  "typeOfAdministration":"001"
+  "cdv": "000000000",
+  "interval": {
+    "startDate": "2024-12-12T12:30:00",
+    "endDate": "2024-12-12T12:45:00"
+  },
+  "typeOfAdministration": "001"
 }
 
 ###

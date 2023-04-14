@@ -15,11 +15,10 @@ import java.time.LocalDateTime;
 @Setter
 public class CreateAppointmentCommand {
 
-    @ValidCdv
+
     private String Cdv;
-    @Future
-    private LocalDateTime startDate;
-    @Future
-    private LocalDateTime endDate;
+
+    private Interval interval;
+
     private String typeOfAdministration;
 }

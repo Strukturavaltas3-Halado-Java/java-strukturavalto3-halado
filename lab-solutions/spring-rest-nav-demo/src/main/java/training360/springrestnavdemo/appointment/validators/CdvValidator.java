@@ -2,8 +2,13 @@ package training360.springrestnavdemo.appointment.validators;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import training360.springrestnavdemo.appointment.model.Appointment;
+import training360.springrestnavdemo.service.AppointmentService;
 
 public class CdvValidator implements ConstraintValidator<ValidCdv, String> {
+
+
 
     @Override
     public boolean isValid(String code, ConstraintValidatorContext constraintValidatorContext) {

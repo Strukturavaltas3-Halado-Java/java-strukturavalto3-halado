@@ -1,4 +1,8 @@
-POST http://localhost:8080/api/movies/1/ratings
+DELETE http://localhost:8080/api/movies/6
+Accept: application/json
+
+###
+POST http://localhost:8080/api/movies/6/ratings
 Content-Type: application/json
 
 {"rating": 11}
