@@ -1,0 +1,52 @@
+### Create author
+POST http://localhost:8080/api/authors
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Gárdonyi Géza"
+}
+
+### Get all authors
+GET http://localhost:8080/api/authors
+Accept: application/json
+
+### Create book
+POST http://localhost:8080/api/books/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "isbn": "12347",
+  "title": "Kincskereső kisködmön"
+}
+
+### Get books from one author
+GET http://localhost:8080/api/books/1
+Accept: application/json
+
+### Get author with books
+GET http://localhost:8080/api/authors/1
+Accept: application/json
+
+### Get Book by title fragment
+GET http://localhost:8080/api/books?titleFragment=r
+
+### Update book with genre
+PUT http://localhost:8080/api/books/3
+Content-Type: application/json
+Accept: application/json
+
+{
+   "genre": "BELLES_LETTRES"
+}
+
+
+
+
+
+
+
+
+
+

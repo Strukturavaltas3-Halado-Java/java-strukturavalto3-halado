@@ -120,3 +120,15 @@ Gyakorlati feladat JPQL query-k gyakorlására
 
 ### 2023-04-11
 Az előző szerdai Author-Book alkalmazás folytatása.
+
+### 2023-04-12
+Könyves feladat befejezése
+
+### 2023-04-13
+Visszakérdezés
+
+### 2023-04-14
+Időjárás adatok lekérdezése REST API-n keresztül
+
+### 2023-04-17
+Enum validálása saját validációval, Thymeleaf demo, letölthető fájl visszaadása, logüzenetek

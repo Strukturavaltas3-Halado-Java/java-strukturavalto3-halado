@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors-Books Application</title>
+</head>
+<body>
+  <h1>Here is an author</h1>
+  <p th:text="${author}"></p>
+
+    <h2>Here are this author's books</h2>
+    <table>
+        <tr th:each="book : ${booksOfAuthor}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+        </tr>
+    </table>
+</body>
+</html>

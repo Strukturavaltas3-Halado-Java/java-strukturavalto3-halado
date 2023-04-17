@@ -1,0 +1,3 @@
+Book{isbn='12346', author'GÁRDONYI GÉZA', title='Ida regénye'}
+Book{isbn='12345', author'GÁRDONYI GÉZA', title='Egri csillagok'}
+Book{isbn='12347', author'MÓRA FERENC', title='Kincskereső kisködmön'}
