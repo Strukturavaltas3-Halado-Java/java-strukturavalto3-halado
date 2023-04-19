@@ -132,3 +132,6 @@ Időjárás adatok lekérdezése REST API-n keresztül
 
 ### 2023-04-17
 Enum validálása saját validációval, Thymeleaf demo, letölthető fájl visszaadása, logüzenetek
+
+### 2023-04-18
+Utolsó konzultáció

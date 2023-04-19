@@ -1,1 +1,0 @@
-Ide jön majd a záróvizsga.
